@@ -1,3 +1,13 @@
-<h1>Articles#index</h1>
+<h1>Articulos</h1>
 <p>Mas que una maquina</p>
 <p>Un MACHINE!!! 🗿</p>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h2><%= article.title %></h2>
+      <p><%= article.body %></p>
+    </li>
+    <hr/>
+  <% end %>
+</ul>
