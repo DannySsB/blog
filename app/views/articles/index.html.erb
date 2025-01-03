@@ -3,6 +3,7 @@
 <p>Un MACHINE!!! 🗿</p>
 
 <ul>
+  <%= button_to "New article", new_article_path, method: :get, class: "btn btn-primary" %>
   <% @articles.each do |article| %>
     <li>
       <h2>
@@ -14,4 +15,5 @@
     </li>
     <hr/>
   <% end %>
+  <%= button_to "New article", new_article_path, method: :get, class: "btn btn-primary" %>
 </ul>

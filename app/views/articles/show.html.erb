@@ -1,12 +1,27 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.body %></p>
+<p style="color: green"><%= notice %></p>
 
+<%= render @article %>
 
-<ul>
-  <li><%= link_to "Editar", edit_article_path(@article) %></li>
-  <li><%= link_to "Eliminar", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "¿Estás seguro?"
-                  } %></li>
-</ul>
-<%= link_to 'Volver a la lista de artículos', articles_path, class: 'btn btn-primary' %>
+<div class="button-group">
+  <%= button_to "Editar Articulo", edit_article_path(@article), method: :get, class: "btn btn-primary"%>
+  <%= button_to "Volver a Articulos", articles_path, method: :get, class: "btn btn-secondary"%>
+  <%= button_to "Eliminar Articulo", @article, method: :delete, class: "btn btn-danger"%>
+</div>
+
+<h4>Agregar un comentario:</h4>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<h4> Comentarios: </h4>
+<%= render @article.comments %>
